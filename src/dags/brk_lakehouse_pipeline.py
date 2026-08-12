@@ -49,7 +49,7 @@ with DAG(
         "environment_config": {
             "execution_config": {
                 "service_account": f"brk-composer-sa@{GCP_PROJECT_ID}.iam.gserviceaccount.com",
-                "subnetwork_uri": "default"
+                "subnetwork_uri": f"projects/{GCP_PROJECT_ID}/regions/{GCP_REGION}/subnetworks/default"
             }
         },
         "runtime_config": {
@@ -96,7 +96,7 @@ with DAG(
         "environment_config": {
             "execution_config": {
                 "service_account": f"brk-composer-sa@{GCP_PROJECT_ID}.iam.gserviceaccount.com",
-                "subnetwork_uri": "default"
+                "subnetwork_uri": f"projects/{GCP_PROJECT_ID}/regions/{GCP_REGION}/subnetworks/default"
             }
         },
         "runtime_config": {
