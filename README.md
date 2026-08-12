@@ -2,6 +2,10 @@
 
 Blueprint completo e automatizado de um **Data Lakehouse efêmero** no Google Cloud Platform para a **BRK Ambiental**, simulando a ingestão de telemetria IoT (água e esgoto), processamento em camadas no Data Lake, orquestração e consultas de BI/AI no BigQuery.
 
+> 📚 **Documentação Técnica Detalhada**:  
+> Para detalhes aprofundados sobre **dimensionamento de máquinas, Dataproc Serverless (Spark), Cloud Composer 3, Cloud Run e Machine Learning no BigQuery (BQML)**, consulte o guia dedicado:  
+> 👉 [**ARCHITECTURE.md**](file:///Users/luanacosta/brk-lakehouse-demo/ARCHITECTURE.md)
+
 ---
 
 ## 🏛️ Arquitetura e Componentes
@@ -12,9 +16,9 @@ Blueprint completo e automatizado de um **Data Lakehouse efêmero** no Google Cl
   - `Raw`: JSONs brutos de telemetria recebidos via Pub/Sub.
   - `Standardized`: Dados tratados, deduplicados e salvos em Parquet particionado.
   - `Trusted`: Dados agregados para BI no **BigQuery**.
-- **Processamento de Dados**: Job **PySpark** executado via **Dataproc Serverless**.
+- **Processamento de Dados**: Job **PySpark** executado via **Dataproc Serverless** (alocação dinâmica por segundo).
 - **Orquestração**: **Cloud Composer 3 (Apache Airflow)** em tamanho Medium.
-- **Analytics & IA**: Views analíticas no **BigQuery** (`brk_lakehouse`).
+- **Analytics & IA**: Views analíticas e modelo de detecção de anomalias K-Means no **BigQuery** (`brk_lakehouse`).
 
 ---
 
@@ -44,7 +48,7 @@ export GCP_BILLING_ACCOUNT_ID="SEU_BILLING_ACCOUNT_ID"
 > - Configura o Tópico e Subscription do Pub/Sub.
 > - Faz deploy do gerador de telemetria no Cloud Run.
 > - Configura o Service Account e o ambiente do **Cloud Composer 3** (Airflow).
-> - Cria as Views analíticas no **BigQuery**.
+> - Cria as Views analíticas e o modelo preditivo BQML no **BigQuery**.
 
 ---
 
