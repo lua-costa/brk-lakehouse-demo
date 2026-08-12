@@ -60,9 +60,10 @@ gcloud storage buckets create "gs://${RAW_BUCKET}" --location="${REGION}" || tru
 gcloud storage buckets create "gs://${STD_BUCKET}" --location="${REGION}" || true
 gcloud storage buckets create "gs://${TRUSTED_BUCKET}" --location="${REGION}" || true
 
-# Upload do script PySpark para o bucket Raw
-echo "📤 Upload do script PySpark para gs://${RAW_BUCKET}/scripts/transform_telemetry.py..."
+# Upload dos scripts PySpark para o bucket Raw
+echo "📤 Upload dos scripts PySpark para gs://${RAW_BUCKET}/scripts/..."
 gcloud storage cp src/spark/transform_telemetry.py "gs://${RAW_BUCKET}/scripts/transform_telemetry.py"
+gcloud storage cp src/spark/transform_gold.py "gs://${RAW_BUCKET}/scripts/transform_gold.py"
 
 # 4. Criar Tópico e Subscription Pub/Sub
 echo "📡 [3/6] Criando Tópico e Subscription Pub/Sub..."
